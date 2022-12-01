@@ -1,8 +1,6 @@
 clc;
 clear;
 
-%%%%%%%%%%%%%%%%%%%%parameters%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 LT_seed_bit = 10;
 RS_parity_num = 2;
 LT_k = 8;

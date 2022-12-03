@@ -40,8 +40,8 @@ for i=1:LT_N
     end
 end
 p=1;
+Binary_Data_input_n = zeros(1,LT_L);
 while p<=LT_N
-    Binary_Data_input_n = zeros(1,LT_L);
     Binary_Data_input_n = Binary_Data_input(p,:);
     LT_n = 34;
     LT_k = 8;
@@ -50,6 +50,7 @@ while p<=LT_N
     LT_c = 0.025;
     LT_delta = 0.001;
     LT_s = LT_c * sqrt(LT_k) * log(LT_k/LT_delta);
+    Binary_Data_input_n_n = zeros(LT_k,LT_n);
     for i=1:LT_k
        for j=1:LT_n
           if((i-1)*LT_n+j<LT_L + 1)
@@ -205,7 +206,8 @@ while p<=LT_N
 
         % Seed and LT code is done. RS encoding is needed.
         % Changing into ACGT is needed.
-
+        
+        One_strand_ACGT_temp(1:(LT_seed_bit+LT_n)/2) = 'A';
         for i=1:(LT_seed_bit+LT_n)/2
             if((One_strand_bit_temp(2*i-1)==0) && (One_strand_bit_temp(2*i)==0))
                 One_strand_ACGT_temp(i) = 'A';
@@ -261,7 +263,7 @@ while p<=LT_N
             success_encoding = success_encoding + 1;
 
             Binary_Data_output(p,(LT_seed_bit+LT_n)*(success_encoding-1)+1:success_encoding*(LT_seed_bit+LT_n)) = One_strand_bit_temp;
-            ACGT_Data_output(p,((LT_seed_bit+LT_n)/2)*(success_encoding-1)+1:success_encoding*((LT_seed_bit+LT_n)/2)) = One_strand_ACGT_temp
+            ACGT_Data_output(p,((LT_seed_bit+LT_n)/2)*(success_encoding-1)+1:success_encoding*((LT_seed_bit+LT_n)/2)) = One_strand_ACGT_temp;
      
         end
         try_encoding = try_encoding + 1;
@@ -383,7 +385,7 @@ while p<=LT_N
             end
         end
         if L == LT_k
-            Before_site_selection_bit(p,:) = random__output_selection
+            Before_site_selection_bit(p,:) = random__output_selection;
             break;
         end
         D = D+1;

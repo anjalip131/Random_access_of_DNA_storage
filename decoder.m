@@ -1,6 +1,8 @@
 clc;
 clear;
 
+%%%%%%%%%%%%%%%%%%%%parameters%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 LT_seed_bit = 10;
 RS_parity_num = 2;
 LT_k = 8;
@@ -149,6 +151,6 @@ for p = 1:size(random_selection,1)
             end
         end
     for i = 1:size(decoding_bitstream,1)
-    decoding_bitstream_all(p,LT_n*(i-1)+1:LT_n*i) = decoding_bitstream(i,:)
+    decoding_bitstream_all(p,LT_n*(i-1)+1:LT_n*i) = decoding_bitstream(i,:);
     end
 end
